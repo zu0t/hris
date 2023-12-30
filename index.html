@@ -1,8 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #dvd-logo {
+      position: absolute;
+    }
+  </style>
+  <title>DVD Logo Animation</title>
+</head>
 <body>
 
-<img src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png">
+  <img id="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" alt="DVD Logo">
+
+  <script>
+    const logo = document.getElementById('dvd-logo');
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    let x = Math.random() * (screenWidth - logo.width);
+    let y = Math.random() * (screenHeight - logo.height);
+    let xSpeed = 2;
+    let ySpeed = 2;
+
+    function animate() {
+      x += xSpeed;
+      y += ySpeed;
+
+      if (x + logo.width > screenWidth || x < 0) {
+        xSpeed = -xSpeed;
+      }
+
+      if (y + logo.height > screenHeight || y < 0) {
+        ySpeed = -ySpeed;
+      }
+
+      logo.style.left = x + 'px';
+      logo.style.top = y + 'px';
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
 
 </body>
 </html>
