@@ -20,6 +20,18 @@
       border-radius: 5%;
       box-shadow: 0 0 10px 5px #ff01f2; /* Adjust the glow effect here */
     }
+
+    #audio-player-container {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    #audio-player {
+      width: 260px;
+    }
   </style>
   <title>Hris</title>
 </head>
@@ -27,9 +39,11 @@
 
   <img id="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" alt="DVD Logo">
   
-<audio controls autoplay loop>
-            <source src="https://cdn.discordapp.com/attachments/818961695825199134/1190514459383451839/i-hope-under-12-made-with-Voicemod-technology.mp3" type="audio/mpeg">
-        </audio>
+<div id="audio-player-container">
+    <audio id="audio-player" controls autoplay loop>
+      <source src="https://cdn.discordapp.com/attachments/818961695825199134/1190514459383451839/i-hope-under-12-made-with-Voicemod-technology.mp3" type="audio/mpeg">
+    </audio>
+  </div>
   <script>
     const logo = document.getElementById('dvd-logo');
     const screenWidth = window.innerWidth;
