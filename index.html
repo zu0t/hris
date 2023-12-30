@@ -37,6 +37,10 @@
     let xSpeed = 2;
     let ySpeed = 2;
 
+    const sound = new Audio('https://cdn.discordapp.com/attachments/818961695825199134/1190514459383451839/i-hope-under-12-made-with-Voicemod-technology.mp3');
+    sound.loop = true;
+    sound.play();
+
     function animate() {
       x += xSpeed;
       y += ySpeed;
