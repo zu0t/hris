@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" sizes="32x32">
+  <meta property="og:title" content="WHAT HRIS SAID???" />
+  <meta property="og:description" content="WHAT THE HECK DID HE SAID???" />
+  <meta property="og:image" content="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -9,34 +13,12 @@
       overflow: hidden;
       background: url('https://cdn.discordapp.com/attachments/818961695825199134/1190504479334875136/image.png') no-repeat center center fixed;
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-end;
-      height: 100vh;
     }
 
     #dvd-logo {
       position: absolute;
       border-radius: 5%;
-      box-shadow: 0 0 10px 5px #ff01f2;
-    }
-
-    #download-button {
-      margin-bottom: 20px;
-      padding: 15px 30px;
-      font-size: 18px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      z-index: +1;
-    }
-
-    #download-button:hover {
-      background-color: #45a049;
+      box-shadow: 0 0 10px 5px #ff01f2; /* Adjust the glow effect here */
     }
   </style>
   <title>Hris</title>
@@ -44,8 +26,6 @@
 <body>
 
   <img id="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" alt="DVD Logo">
-
-  <button id="download-button" onclick="downloadImage()">Download Image</button>
 
   <script>
     const logo = document.getElementById('dvd-logo');
@@ -73,20 +53,6 @@
       logo.style.top = y + 'px';
 
       requestAnimationFrame(animate);
-    }
-
-    function downloadImage() {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = screenWidth;
-      canvas.height = screenHeight;
-
-      ctx.drawImage(logo, x, y, logo.width, logo.height);
-
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png');
-      link.download = 'https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png';
-      link.click();
     }
 
     animate();
