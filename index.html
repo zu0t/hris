@@ -26,7 +26,11 @@
 <body>
 
   <img id="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" alt="DVD Logo">
-
+  
+<audio id="background-music" autoplay loop>
+    <source src="https://cdn.discordapp.com/attachments/818961695825199134/1190514459383451839/i-hope-under-12-made-with-Voicemod-technology.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
   <script>
     const logo = document.getElementById('dvd-logo');
     const screenWidth = window.innerWidth;
@@ -36,11 +40,7 @@
     let y = Math.random() * (screenHeight - logo.height);
     let xSpeed = 2;
     let ySpeed = 2;
-
-    const sound = new Audio('https://cdn.discordapp.com/attachments/818961695825199134/1190514459383451839/i-hope-under-12-made-with-Voicemod-technology.mp3');
-    sound.loop = true;
-    sound.play();
-
+    
     function animate() {
       x += xSpeed;
       y += ySpeed;
