@@ -15,7 +15,7 @@
       background-size: cover;
     }
 
-    #dvd-logo {
+    .dvd-logo {
       position: absolute;
       border-radius: 5%;
       box-shadow: 0 0 10px 5px #ff01f2; /* Adjust the glow effect here */
@@ -37,43 +37,49 @@
 </head>
 <body>
 
-  <img id="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" alt="DVD Logo">
-  
-<div id="audio-player-container">
+  <img class="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" alt="DVD Logo">
+  <img class="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1191150341459284058/image.png" alt="Second Logo">
+  <!-- Add more images if needed -->
+
+  <div id="audio-player-container">
     <audio id="audio-player" controls autoplay loop>
       <source src="./images/Download (47).mp3" type="audio/mpeg">
     </audio>
   </div>
   <script>
-    const logo = document.getElementById('dvd-logo');
+    const logos = document.querySelectorAll('.dvd-logo');
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    let x = Math.random() * (screenWidth - logo.width);
-    let y = Math.random() * (screenHeight - logo.height);
-    let xSpeed = 2;
-    let ySpeed = 2;
-    
-    function animate() {
-      x += xSpeed;
-      y += ySpeed;
-
-      if (x + logo.width > screenWidth || x < 0) {
-        xSpeed = -xSpeed;
-      }
-
-      if (y + logo.height > screenHeight || y < 0) {
-        ySpeed = -ySpeed;
-      }
+    logos.forEach(logo => {
+      let x = Math.random() * (screenWidth - logo.width);
+      let y = Math.random() * (screenHeight - logo.height);
+      let xSpeed = 2 * (Math.random() > 0.5 ? 1 : -1);
+      let ySpeed = 2 * (Math.random() > 0.5 ? 1 : -1);
 
       logo.style.left = x + 'px';
       logo.style.top = y + 'px';
 
-      requestAnimationFrame(animate);
-    }
+      function animate() {
+        x += xSpeed;
+        y += ySpeed;
 
-    animate();
+        if (x + logo.width > screenWidth || x < 0) {
+          xSpeed = -xSpeed;
+        }
+
+        if (y + logo.height > screenHeight || y < 0) {
+          ySpeed = -ySpeed;
+        }
+
+        logo.style.left = x + 'px';
+        logo.style.top = y + 'px';
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    });
   </script>
-
 </body>
 </html>
