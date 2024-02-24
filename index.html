@@ -1,85 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" sizes="32x32">
-  <meta property="og:title" content="WHAT HRIS SAID???" />
-  <meta property="og:description" content="WHAT THE HECK DID HE SAID???" />
-  <meta property="og:image" content="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bye</title>
+<style>
     body {
-      margin: 0;
-      overflow: hidden;
-      background: url('https://cdn.discordapp.com/attachments/818961695825199134/1190504479334875136/image.png') no-repeat center center fixed;
-      background-size: cover;
+        font-family: monospace;
+        background-color: black;
+        color: white;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
     }
 
-    .dvd-logo {
-      position: absolute;
-      border-radius: 5%;
-      box-shadow: 0 0 10px 5px #ff01f2; /* Adjust the glow effect here */
+    .console {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
     }
 
-    #audio-player-container {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
+    .console-text {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        width: auto;
+        border-right: .15em solid white;
+        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     }
 
-    #audio-player {
-      width: 260px;
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: auto;
+        }
     }
-  </style>
-  <title>Hris</title>
+
+    @keyframes blink-caret {
+        from, to {
+            border-color: transparent;
+        }
+        50% {
+            border-color: white;
+        }
+    }
+</style>
 </head>
 <body>
+<div class="console">
+    <div class="console-text"></div>
+</div>
+<script>
+    const phrases = [
+        "All images were removed :(",
+        "So sad",
+        "I'm falling in deep depression from it :(",
+        "I will not remake this site"
+    ];
+    let index = 0;
+    const consoleText = document.querySelector('.console-text');
 
-  <img class="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1190500351636406383/imageeeeeeeeeeeeee.png" alt="DVD Logo">
-  <img class="dvd-logo" src="https://cdn.discordapp.com/attachments/1153438593642135653/1193397064793587842/image.png" alt="Second Logo">
-<img class="dvd-logo" src="https://media.discordapp.net/attachments/1153438593642135653/1191151337560354936/image.png" alt="hrispedo">
+    function changeText() {
+        const text = phrases[index];
+        let i = 0;
+        const interval = setInterval(function() {
+            consoleText.textContent += text[i];
+            i++;
+            if (i > text.length - 1) {
+                clearInterval(interval);
+                setTimeout(function() {
+                    eraseText();
+                }, 1500); 
+            }
+        }, 100);
+        index = (index + 1) % phrases.length;
+    }
 
-  <div id="audio-player-container">
-    <audio id="audio-player" controls autoplay loop>
-      <source src="./images/Download (47).mp3" type="audio/mpeg">
-    </audio>
-  </div>
-  <script>
-    const logos = document.querySelectorAll('.dvd-logo');
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight;
+    function eraseText() {
+        const textLength = consoleText.textContent.length;
+        const interval = setInterval(function() {
+            consoleText.textContent = consoleText.textContent.slice(0, -1);
+            if (consoleText.textContent === '') {
+                clearInterval(interval);
+                setTimeout(function() {
+                    changeText();
+                }, 500);
+            }
+        }, 50);
+    }
 
-    logos.forEach(logo => {
-      let x = Math.random() * (screenWidth - logo.width);
-      let y = Math.random() * (screenHeight - logo.height);
-      let xSpeed = 2 * (Math.random() > 0.5 ? 1 : -1);
-      let ySpeed = 2 * (Math.random() > 0.5 ? 1 : -1);
-
-      logo.style.left = x + 'px';
-      logo.style.top = y + 'px';
-
-      function animate() {
-        x += xSpeed;
-        y += ySpeed;
-
-        if (x + logo.width > screenWidth || x < 0) {
-          xSpeed = -xSpeed;
-        }
-
-        if (y + logo.height > screenHeight || y < 0) {
-          ySpeed = -ySpeed;
-        }
-
-        logo.style.left = x + 'px';
-        logo.style.top = y + 'px';
-
-        requestAnimationFrame(animate);
-      }
-
-      animate();
-    });
-  </script>
+    setTimeout(changeText, 2000);
+</script>
 </body>
 </html>
